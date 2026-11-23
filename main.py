@@ -1,6 +1,8 @@
 
 import sys
 
+from PySide6.QtGui import QIcon
+
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -12,12 +14,12 @@ from PySide6.QtWidgets import (
 )
 
 
-class GameKitWindow(QMainWindow):
+class NonyteWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
         # 1. Konfiguracja okna
-        self.setWindowTitle("GameKit")
+        self.setWindowTitle("Notyte")
         self.resize(1100, 700)
 
         # 2. Style aplikacji
@@ -34,12 +36,12 @@ class GameKitWindow(QMainWindow):
 
         # 5. Sidebar
         sidebar = QWidget()
+        sidebar.setFixedWidth(220)
 
         # TODO: Ustaw szerokość sidebaru
 
         sidebar_layout = QVBoxLayout(sidebar)
 
-        # TODO: Dodaj logo
         # TODO: Dodaj przyciski nawigacji
         # TODO: Dodaj odstęp na dole
 
@@ -48,18 +50,27 @@ class GameKitWindow(QMainWindow):
         content_layout = QVBoxLayout(content)
 
         # TODO: Dodaj tytuł
+        title = QLabel("NONYTE - Your Gaming Copilot")
+        title.setStyleSheet("""
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin: auto;
+        """)
         # TODO: Dodaj podtytuł
         # TODO: Dodaj zawartość panelu
 
         # 7. Połączenie elementów
         main_layout.addWidget(sidebar)
         main_layout.addWidget(content)
+        main_layout.addWidget(title)
 
 
 # 8. Uruchomienie aplikacji
 app = QApplication(sys.argv)
 
-window = GameKitWindow()
+window = NonyteWindow()
+window.setWindowIcon(QIcon("logo.png"))
 window.show()
 
 sys.exit(app.exec())
