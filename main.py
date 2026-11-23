@@ -16,90 +16,47 @@ class GameKitWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # 1. Konfiguracja okna
         self.setWindowTitle("GameKit")
         self.resize(1100, 700)
 
+        # 2. Style aplikacji
         self.setStyleSheet("""
-            QMainWindow {
-                background-color: #15171c;
-            }
-
-            QLabel {
-                color: #f0f0f0;
-            }
-
-            QPushButton {
-                background-color: #22252c;
-                color: #dcdfe6;
-                border: none;
-                padding: 12px;
-                text-align: left;
-                border-radius: 6px;
-            }
-
-            QPushButton:hover {
-                background-color: #343944;
-            }
+            
         """)
 
-        # Główny widget
+        # 3. Główny widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
-        # Główny układ
+        # 4. Główny układ
         main_layout = QHBoxLayout(central_widget)
 
-        # Sidebar
+        # 5. Sidebar
         sidebar = QWidget()
-        sidebar.setFixedWidth(220)
-        sidebar.setStyleSheet(
-            "background-color: #1c1f26;"
-        )
+
+        # TODO: Ustaw szerokość sidebaru
 
         sidebar_layout = QVBoxLayout(sidebar)
 
-        logo = QLabel("GAMEKIT")
-        logo.setStyleSheet("""
-            font-size: 24px;
-            font-weight: bold;
-            color: #7c9cff;
-        """)
+        # TODO: Dodaj logo
+        # TODO: Dodaj przyciski nawigacji
+        # TODO: Dodaj odstęp na dole
 
-        sidebar_layout.addWidget(logo)
-
-        library_button = QPushButton("Biblioteka")
-        backlog_button = QPushButton("Do ogrania")
-        completed_button = QPushButton("Ukończone")
-
-        sidebar_layout.addWidget(library_button)
-        sidebar_layout.addWidget(backlog_button)
-        sidebar_layout.addWidget(completed_button)
-
-        sidebar_layout.addStretch()
-
-        # Główny panel
+        # 6. Główny panel
         content = QWidget()
         content_layout = QVBoxLayout(content)
 
-        title = QLabel("Moja biblioteka")
-        title.setStyleSheet("font-size: 32px;")
+        # TODO: Dodaj tytuł
+        # TODO: Dodaj podtytuł
+        # TODO: Dodaj zawartość panelu
 
-        subtitle = QLabel(
-            "Twoje gry w jednym miejscu."
-        )
-        subtitle.setStyleSheet(
-            "color: #9298a5; font-size: 14px;"
-        )
-
-        content_layout.addWidget(title)
-        content_layout.addWidget(subtitle)
-        content_layout.addStretch()
-
-        # Dodanie elementów do głównego układu
+        # 7. Połączenie elementów
         main_layout.addWidget(sidebar)
         main_layout.addWidget(content)
 
 
+# 8. Uruchomienie aplikacji
 app = QApplication(sys.argv)
 
 window = GameKitWindow()
