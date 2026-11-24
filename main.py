@@ -3,6 +3,8 @@ import sys
 
 from PySide6.QtGui import QIcon
 
+from PySide6.QtCore import Qt
+
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -34,13 +36,47 @@ class NonyteWindow(QMainWindow):
         # 4. Główny układ
         main_layout = QHBoxLayout(central_widget)
 
+        
         # 5. Sidebar
         sidebar = QWidget()
         sidebar.setFixedWidth(220)
 
-        # TODO: Ustaw szerokość sidebaru
+        sidebar.setStyleSheet("""
+            QWidget {
+                background-color: #1e1e1e;
+            }
+        """)
 
         sidebar_layout = QVBoxLayout(sidebar)
+
+        homeButton = QPushButton("Home")
+        gamelistButton = QPushButton("Game list")
+        settingsButton = QPushButton("Settings")
+        quitButton = QPushButton("Quit")
+        sidebar_layout.addWidget(homeButton)
+        sidebar_layout.addWidget(gamelistButton)
+        sidebar_layout.addWidget(settingsButton)
+        sidebar_layout.addWidget(quitButton)
+
+        sidebar.setStyleSheet("""
+        QPushButton {
+            background-color: #2d2d2d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: left;
+        }
+
+        QPushButton:hover {
+            background-color: #404040;
+        }
+        """)
+
+        # Wolne miejsce pod przyciskami
+        sidebar_layout.addStretch()
+
+        # TODO: Ustaw szerokość sidebaru
 
         # TODO: Dodaj przyciski nawigacji
         # TODO: Dodaj odstęp na dole
@@ -49,7 +85,10 @@ class NonyteWindow(QMainWindow):
         content = QWidget()
         content_layout = QVBoxLayout(content)
 
+        content_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
         # TODO: Dodaj tytuł
+        title_layout = QHBoxLayout()
         title = QLabel("NONYTE - Your Gaming Copilot")
         title.setStyleSheet("""
             font-size: 24px;
@@ -57,13 +96,18 @@ class NonyteWindow(QMainWindow):
             color: white;
             margin: auto;
         """)
+
+        title_layout.addStretch()
+        title_layout.addWidget(title)
+        title_layout.addStretch()
+        content_layout.addLayout(title_layout)
+        
         # TODO: Dodaj podtytuł
         # TODO: Dodaj zawartość panelu
 
         # 7. Połączenie elementów
         main_layout.addWidget(sidebar)
         main_layout.addWidget(content)
-        main_layout.addWidget(title)
 
 
 # 8. Uruchomienie aplikacji
