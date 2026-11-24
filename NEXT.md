@@ -37,4 +37,5 @@ Build the first working version of the GameKit desktop application.
 - Game playtime tracking
 
 ## Current task
+Create concept art for the app.
 Create the main application window with a sidebar and an empty library view.
