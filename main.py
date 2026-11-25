@@ -49,14 +49,14 @@ class NonyteWindow(QMainWindow):
 
         sidebar_layout = QVBoxLayout(sidebar)
 
-        homeButton = QPushButton("Home")
-        gamelistButton = QPushButton("Game list")
-        settingsButton = QPushButton("Settings")
-        quitButton = QPushButton("Quit")
-        sidebar_layout.addWidget(homeButton)
-        sidebar_layout.addWidget(gamelistButton)
-        sidebar_layout.addWidget(settingsButton)
-        sidebar_layout.addWidget(quitButton)
+        libraryButton = QPushButton("Library")
+        backlogButton = QPushButton("Backlog")
+        playingButton = QPushButton("Playing")
+        completedButton = QPushButton("Completed")
+        sidebar_layout.addWidget(libraryButton)
+        sidebar_layout.addWidget(backlogButton)
+        sidebar_layout.addWidget(playingButton)
+        sidebar_layout.addWidget(completedButton)
 
         sidebar.setStyleSheet("""
         QPushButton {
