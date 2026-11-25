@@ -1,7 +1,7 @@
-# GameKit – Next Steps
+# Nonyte – Next Steps
 
 ## Current goal
-Build the first working version of the GameKit desktop application.
+Build the first working version of the Nonyte desktop application.
 
 ## MVP – Version 0.1
 

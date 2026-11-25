@@ -1,6 +1,6 @@
-# GameKit
+# Nonyte
 
-**GameKit** is a personal desktop application for managing my video game collection.
+**Nonyte** is a personal desktop application for managing my video game collection.
 
 The goal of this project is to create one place where I can organize my games, track my progress, and eventually manage game configuration backups and profiles.
 
@@ -46,4 +46,4 @@ This project is being built as a learning project, with a focus on Python, deskt
 
 ---
 
-Created by me as a personal programming project.
+Created by me (Grivias) as a personal programming project with free use for everyone.
