@@ -2,9 +2,7 @@
 import sys
 
 from PySide6.QtGui import QIcon
-
 from PySide6.QtCore import Qt
-
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -13,6 +11,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QHBoxLayout,
+    QLineEdit,
 )
 
 
@@ -20,101 +19,127 @@ class NotyteWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # 1. Konfiguracja okna
+        # ==========================================
+        # 1. KONFIGURACJA OKNA
+        # ==========================================
+
         self.setWindowTitle("Notyte")
         self.resize(1100, 700)
+        self.setWindowIcon(QIcon("logo.png"))
 
-        # 2. Style aplikacji
-        self.setStyleSheet("""
-            
-        """)
+        # ==========================================
+        # 2. GŁÓWNY WIDGET I LAYOUT
+        # ==========================================
 
-        # 3. Główny widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
-        # 4. Główny układ
         main_layout = QHBoxLayout(central_widget)
 
-        
-        # 5. Sidebar
+        # ==========================================
+        # 3. SIDEBAR
+        # ==========================================
+
         sidebar = QWidget()
         sidebar.setFixedWidth(220)
 
-        sidebar.setStyleSheet("""
+        sidebar_layout = QVBoxLayout(sidebar)
+
+        # ==========================================
+        # 4. HEADER
+        # ==========================================
+
+        header = QWidget()
+        header_layout = QHBoxLayout(header)
+        header_layout.setContentsMargins(15, 15, 15, 15)
+        search_input = QLineEdit()
+        search_input.setPlaceholderText("Search your library...")
+
+        header_layout.addWidget(search_input)
+
+        # ==========================================
+        # 5. MAIN CONTENT
+        # ==========================================
+
+        main_content = QWidget()
+        main_content_layout = QVBoxLayout(main_content)
+
+        right_panel = QWidget()
+        right_layout = QVBoxLayout(right_panel)
+        right_layout.setContentsMargins(0, 0, 0, 0)
+        right_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+        right_layout.addWidget(header)
+        right_layout.addWidget(main_content)
+
+        # --- Przyciski nawigacji ---
+
+        library_button = QPushButton("Library")
+        backlog_button = QPushButton("Backlog")
+        playing_button = QPushButton("Playing")
+        completed_button = QPushButton("Completed")
+
+        sidebar_layout.addWidget(library_button)
+        sidebar_layout.addWidget(backlog_button)
+        sidebar_layout.addWidget(playing_button)
+        sidebar_layout.addWidget(completed_button)
+
+        # --- Wolna przestrzeń ---
+
+        sidebar_layout.addStretch()
+
+        # TODO: Dodaj przycisk Settings na dole
+
+        # --- Nagłówek ---
+
+        # TODO: Dodaj tytuł panelu
+
+        # --- Podtytuł ---
+
+        # TODO: Dodaj podtytuł
+
+        # --- Zawartość ---
+
+        # TODO: Dodaj zawartość panelu
+
+        # ==========================================
+        # 5. POŁĄCZENIE LAYOUTÓW
+        # ==========================================
+
+        main_layout.addWidget(sidebar)
+        main_layout.addWidget(right_panel)
+
+        # ==========================================
+        # 6. STYLE
+        # ==========================================
+
+        self.setStyleSheet("""
             QWidget {
                 background-color: #1e1e1e;
+                color: white;
+            }
+
+            QPushButton {
+                background-color: #2d2d2d;
+                border: none;
+                border-radius: 8px;
+                padding: 12px;
+                text-align: left;
+            }
+
+            QPushButton:hover {
+                background-color: #404040;
             }
         """)
 
-        sidebar_layout = QVBoxLayout(sidebar)
 
-        libraryButton = QPushButton("Library")
-        backlogButton = QPushButton("Backlog")
-        playingButton = QPushButton("Playing")
-        completedButton = QPushButton("Completed")
-        sidebar_layout.addWidget(libraryButton)
-        sidebar_layout.addWidget(backlogButton)
-        sidebar_layout.addWidget(playingButton)
-        sidebar_layout.addWidget(completedButton)
+# ==========================================
+# 7. URUCHOMIENIE APLIKACJI
+# ==========================================
 
-        sidebar.setStyleSheet("""
-        QPushButton {
-            background-color: #2d2d2d;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            text-align: left;
-        }
-
-        QPushButton:hover {
-            background-color: #404040;
-        }
-        """)
-
-        # Wolne miejsce pod przyciskami
-        sidebar_layout.addStretch()
-
-        # TODO: Ustaw szerokość sidebaru
-
-        # TODO: Dodaj przyciski nawigacji
-        # TODO: Dodaj odstęp na dole
-
-        # 6. Główny panel
-        content = QWidget()
-        content_layout = QVBoxLayout(content)
-
-        content_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-
-        # TODO: Dodaj tytuł
-        title_layout = QHBoxLayout()
-        title = QLabel("NOTYTE - Your Gaming Copilot")
-        title.setStyleSheet("""
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            margin: auto;
-        """)
-
-        title_layout.addStretch()
-        title_layout.addWidget(title)
-        title_layout.addStretch()
-        content_layout.addLayout(title_layout)
-        
-        # TODO: Dodaj podtytuł
-        # TODO: Dodaj zawartość panelu
-
-        # 7. Połączenie elementów
-        main_layout.addWidget(sidebar)
-        main_layout.addWidget(content)
-
-
-# 8. Uruchomienie aplikacji
 app = QApplication(sys.argv)
 
 window = NotyteWindow()
-window.setWindowIcon(QIcon("logo.png"))
 window.show()
 
 sys.exit(app.exec())
