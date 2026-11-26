@@ -1,6 +1,6 @@
-# Nonyte
+# Notyte
 
-**Nonyte** is a personal desktop application for managing my video game collection.
+**Notyte** is a personal desktop application for managing my video game collection.
 
 The goal of this project is to create one place where I can organize my games, track my progress, and eventually manage game configuration backups and profiles.
 

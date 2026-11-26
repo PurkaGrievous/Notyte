@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 
-class NonyteWindow(QMainWindow):
+class NotyteWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -89,7 +89,7 @@ class NonyteWindow(QMainWindow):
 
         # TODO: Dodaj tytuł
         title_layout = QHBoxLayout()
-        title = QLabel("NONYTE - Your Gaming Copilot")
+        title = QLabel("NOTYTE - Your Gaming Copilot")
         title.setStyleSheet("""
             font-size: 24px;
             font-weight: bold;
@@ -113,7 +113,7 @@ class NonyteWindow(QMainWindow):
 # 8. Uruchomienie aplikacji
 app = QApplication(sys.argv)
 
-window = NonyteWindow()
+window = NotyteWindow()
 window.setWindowIcon(QIcon("logo.png"))
 window.show()
 
