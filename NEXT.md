@@ -1,7 +1,7 @@
-# Nonyte – Next Steps
+# Notyte – Next Steps
 
 ## Current goal
-Build the first working version of the Nonyte desktop application.
+Build the first working version of the Notyte desktop application.
 
 ## MVP – Version 0.1
 
